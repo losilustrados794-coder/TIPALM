@@ -143,3 +143,23 @@ form button[type="submit"]:active {
 .mi-boton:hover {
   background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
 }
+
+.boton-largo{
+  text-align: center;
+  background-color: #00CC00; /* Verde brillante */
+  color: #000000;            /* Texto negro */
+  border: none;
+  border-radius: 12px;
+  padding: 40px 40px;
+  font-size: 4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;      /* Lo convierte en bloque */
+  width: 400px;        /* Un ancho fijo para el botón */
+  margin: 0 auto;      /* Centra automáticamente a la izquierda y derecha */
+}
+
+.boton-largo:hover{
+    background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
+}
