@@ -123,3 +123,19 @@ form button[type="submit"]:active {
   line-height: 1;
   transform: skewX(12deg);
 }
+
+.mi-boton {
+  background-color: #00CC00; /* Verde brillante */
+  color: #000000;            /* Texto negro */
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mi-boton:hover {
+  background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
+}
