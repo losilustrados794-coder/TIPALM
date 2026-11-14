@@ -156,7 +156,7 @@ form button[type="submit"]:active {
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: block;      /* Lo convierte en bloque */
-  width: 400px;        /* Un ancho fijo para el botón */
+  width: 500px;        /* Un ancho fijo para el botón */
   margin: 0 auto;      /* Centra automáticamente a la izquierda y derecha */
 }
 
