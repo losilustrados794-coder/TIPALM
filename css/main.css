@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap'); /* Opcional si quieres usar la fuente tecno */
 
 h1 {
   color: #00CC00;                      /* El verde de la primera imagen */
@@ -8,4 +9,67 @@ h1 {
   text-align: center;
 }
 
-  
+
+form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #121212; /* Fondo oscuro moderno */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  font-family: sans-serif;
+}
+
+/* Estilo para la etiqueta (label) */
+form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Estilo para el campo de texto (input) */
+form input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  background-color: #1e1e1e;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  box-sizing: border-box; /* Evita que el padding rompa el ancho */
+  transition: all 0.3s ease;
+}
+
+/* Efecto cuando haces clic o escribes en el input (usa el verde brillante) */
+form input[type="text"]:focus {
+  outline: none;
+  border-color: #00CC00;
+  box-shadow: 0 0 8px rgba(0, 204, 0, 0.4);
+}
+
+/* Estilo para el botón de enviar */
+form button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #00CC00; /* Color verde brillante */
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Efecto al pasar el mouse por encima del botón */
+form button[type="submit"]:hover {
+  background-color: #00b300;
+}
+
+/* Efecto al presionar el botón */
+form button[type="submit"]:active {
+  transform: scale(0.98);
+}
