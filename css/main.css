@@ -191,3 +191,9 @@ img{
 img:hover{
     transform:scale(1.5);
 }
+
+.avatar-img {
+  display: block;
+  margin: 0 auto 20px auto; /* 0 arriba, auto a los lados (centrado), 20px abajo */
+  width: 180px;             /* Ancho deseado */
+}
