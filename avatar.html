@@ -1,1 +1,22 @@
-<html></html>
+<html><html>
+  <head>
+    <link rel="stylesheet" href="css/main.css">
+    <title>avatar</title>
+  </head>
+  <body>
+    <h1>¡Hola, <span id="nombreUsuario"></span>! Bienvenid@ a TIPALM.</h1>
+    <p>Estamos listos para evaluar tu salud mental.</p>
+    <script>// 1. Capturamos los datos que viajan en la URL
+const parametros = new URLSearchParams(window.location.search);
+
+// 2. Extraemos el valor que tiene 'nombre' (el mismo name del input del formulario)
+const elNombre = parametros.get('nombre');
+
+// 3. Si el usuario escribió un nombre, lo insertamos en el span de la página
+if (elNombre) {
+  document.getElementById('nombreUsuario').textContent = elNombre;
+} else {
+  document.getElementById('nombreUsuario').textContent = "Astronauta"; // Por si entran sin escribir nada
+}</script>
+  </body>
+</html>
