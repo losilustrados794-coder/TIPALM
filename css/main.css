@@ -197,3 +197,30 @@ img:hover{
   margin: 0 auto 20px auto; /* 0 arriba, auto a los lados (centrado), 20px abajo */
   width: 180px;             /* Ancho deseado */
 }
+
+
+.av-editor { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: flex-start; margin: 16px auto; max-width: 900px; }
+.av-preview { position: relative; width: 340px; max-width: 90vw; aspect-ratio: 1 / 1; background: #dcebf7; border-radius: 16px; overflow: hidden; flex: none; }
+.av-preview img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.av-controles { flex: 1 1 280px; max-width: 420px; }
+.av-grupo { margin-bottom: 16px; }
+.av-grupo h2 { font-size: 1rem; margin: 0 0 6px; }
+.av-opciones { display: flex; flex-wrap: wrap; gap: 6px; }
+.av-opciones input { position: absolute; opacity: 0; pointer-events: none; }
+.av-opciones label { padding: 6px 12px; border: 2px solid #8a8a9a; border-radius: 999px; cursor: pointer; user-select: none; }
+.av-opciones input:checked + label { background: #333645; color: #fff; border-color: #333645; }
+.av-opciones input:focus-visible + label { outline: 3px solid #5b7fd6; outline-offset: 2px; }
+.av-opciones .av-color { width: 34px; height: 34px; padding: 0; border-width: 3px; }
+.av-opciones input:checked + .av-color { border-color: #000; box-shadow: 0 0 0 2px #fff inset; }
+.av-acciones { text-align: center; margin: 16px 0; }
+
+/* Blindaje: evita que reglas globales (main.css) alteren las capas del avatar */
+.av-preview { background: #dcebf7 !important; isolation: isolate; }
+.av-preview > img {
+  position: absolute !important; inset: 0 !important;
+  width: 100% !important; height: 100% !important; max-width: none !important;
+  display: block !important; opacity: 1 !important; visibility: visible !important;
+  mix-blend-mode: normal !important; filter: none !important; transform: none !important;
+  background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important;
+  object-fit: contain !important; clip-path: none !important; mask: none !important;
+}
