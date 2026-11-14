@@ -165,3 +165,29 @@ form button[type="submit"]:active {
 .boton-largo:hover{
     background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
 }
+
+div-img{
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    padding-top:20%;
+}
+
+div-img-base{
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    padding-top:20%;
+}
+img{
+    transition: transform .2s;
+    width:300px;
+    height:200px;
+    margin:0 auto;
+    background-color: rgb(173, 173, 237);
+    border-radius: 10px;
+    border: 1px solid black;
+}
+img:hover{
+    transform:scale(1.5);
+}
