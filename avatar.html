@@ -18,6 +18,17 @@
 .av-opciones .av-color { width: 34px; height: 34px; padding: 0; border-width: 3px; }
 .av-opciones input:checked + .av-color { border-color: #000; box-shadow: 0 0 0 2px #fff inset; }
 .av-acciones { text-align: center; margin: 16px 0; }
+
+/* Blindaje: evita que reglas globales (main.css) alteren las capas del avatar */
+.av-preview { background: #dcebf7 !important; isolation: isolate; }
+.av-preview > img {
+  position: absolute !important; inset: 0 !important;
+  width: 100% !important; height: 100% !important; max-width: none !important;
+  display: block !important; opacity: 1 !important; visibility: visible !important;
+  mix-blend-mode: normal !important; filter: none !important; transform: none !important;
+  background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important;
+  object-fit: contain !important; clip-path: none !important; mask: none !important;
+}
     </style>
     <title>avatar</title>
   </head>
@@ -178,6 +189,10 @@ document.getElementById('btnAceptar').addEventListener('click', () => {
   }
 });
 
+dibujar();
+    </script>
+  </body>
+</html>
 dibujar();
     </script>
   </body>
