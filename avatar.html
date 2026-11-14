@@ -1,22 +1,45 @@
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <title>avatar</title>
+    <style>
+      .av-editor { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: flex-start; margin: 16px auto; max-width: 900px; }
+      .av-preview { position: relative; width: 340px; max-width: 90vw; aspect-ratio: 1 / 1; background: #dcebf7; border-radius: 16px; overflow: hidden; flex: none; }
+      .av-preview img { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .av-controles { flex: 1 1 280px; max-width: 420px; }
+      .av-grupo { margin-bottom: 16px; }
+      .av-grupo h2 { font-size: 1rem; margin: 0 0 6px; }
+      .av-opciones { display: flex; flex-wrap: wrap; gap: 6px; }
+      .av-opciones input { position: absolute; opacity: 0; pointer-events: none; }
+      .av-opciones label { padding: 6px 12px; border: 2px solid #8a8a9a; border-radius: 999px; cursor: pointer; user-select: none; }
+      .av-opciones input:checked + label { background: #333645; color: #fff; border-color: #333645; }
+      .av-opciones input:focus-visible + label { outline: 3px solid #5b7fd6; outline-offset: 2px; }
+      .av-opciones .av-color { width: 34px; height: 34px; padding: 0; border-width: 3px; }
+      .av-opciones input:checked + .av-color { border-color: #000; box-shadow: 0 0 0 2px #fff inset; }
+      .av-acciones { text-align: center; margin: 16px 0; }
+    </style>
   </head>
   <body>
     <h1>Hola, <span id="nombreUsuario"></span></h1>
-  </br>
     <h1>crea tu propio avatar</h1>
-  </br>
-  </br>
-  </br>
-  </br>
 
-  <a  href="horario.html">
-    <button type="button" class="mi-boton">Aceptar</button>
-  </a>
-    
-    <script>// 1. Capturamos los datos que viajan en la URL
+    <div class="av-editor">
+      <div class="av-preview" id="vistaPrevia" aria-label="Vista previa del avatar"></div>
+
+      <div class="av-controles" id="controles"></div>
+    </div>
+
+    <div class="av-acciones">
+      <button type="button" class="mi-boton" id="btnAleatorio">Aleatorio</button>
+      <a href="horario.html" id="enlaceAceptar">
+        <button type="button" class="mi-boton" id="btnAceptar">Aceptar</button>
+      </a>
+    </div>
+
+    <script>
+// 1. Capturamos los datos que viajan en la URL
 const parametros = new URLSearchParams(window.location.search);
 
 // 2. Extraemos el valor que tiene 'nombre' (el mismo name del input del formulario)
@@ -28,6 +51,133 @@ if (elNombre) {
 } else {
   document.getElementById('nombreUsuario').textContent = "Astronauta"; // Por si entran sin escribir nada
 }
-  </script>
+
+// ================== CREADOR DE AVATAR ==================
+const RUTA = 'img/';
+
+// Opciones disponibles (el "valor" es la parte del nombre del archivo)
+const OPCIONES = {
+  cuerpo:  { titulo: 'Cuerpo',  items: [['chica', 'Chica'], ['chico', 'Chico']] },
+  pelo:    { titulo: 'Pelo',    items: [['ninguno', 'Sin pelo'], ['corto_negro', 'Corto'], ['largo_negro', 'Largo negro'], ['largo_gris', 'Largo gris']] },
+  camisa:  { titulo: 'Camisa',  items: [['oscuro', 'Oscuro', '#333645'], ['azul', 'Azul', '#94c1e6'], ['verde', 'Verde', '#8aa895'], ['rosa', 'Rosa', '#a88a96']] },
+  gafas:   { titulo: 'Gafas',   items: [['ninguna', 'Sin gafas'], ['negras', 'Negras'], ['grises', 'Grises']] },
+  barba:   { titulo: 'Barba',   items: [['no', 'No'], ['si', 'Sí']] }
+};
+
+// Estado inicial (se recupera el avatar anterior si existe)
+let avatar = { cuerpo: 'chica', pelo: 'largo_negro', camisa: 'verde', gafas: 'ninguna', barba: 'no' };
+try {
+  const guardado = JSON.parse(localStorage.getItem('avatarConfig'));
+  if (guardado) avatar = Object.assign(avatar, guardado);
+} catch (e) {}
+
+// Devuelve las capas (de atrás hacia adelante) según el estado actual
+function capas(a) {
+  const lista = [];
+  if (a.pelo.startsWith('largo')) lista.push('pelo_' + a.pelo);   // pelo largo va detrás del cuerpo
+  lista.push('base_' + a.cuerpo);
+  lista.push('camisa_' + a.cuerpo + '_' + a.camisa);
+  if (a.barba === 'si') lista.push('barba');
+  lista.push('ojos');
+  if (a.gafas !== 'ninguna') lista.push('gafas_' + a.gafas);
+  if (a.pelo.startsWith('corto')) lista.push('pelo_' + a.pelo);   // pelo corto va encima de la cabeza
+  return lista;
+}
+
+// Precarga de todas las imágenes
+const cache = {};
+function cargar(nombre) {
+  if (!cache[nombre]) {
+    cache[nombre] = new Image();
+    cache[nombre].src = RUTA + nombre + '.png';
+  }
+  return cache[nombre];
+}
+['chica', 'chico'].forEach(c => {
+  cargar('base_' + c);
+  OPCIONES.camisa.items.forEach(i => cargar('camisa_' + c + '_' + i[0]));
+});
+OPCIONES.pelo.items.forEach(i => i[0] !== 'ninguno' && cargar('pelo_' + i[0]));
+['ojos', 'barba', 'gafas_negras', 'gafas_grises'].forEach(cargar);
+
+const vista = document.getElementById('vistaPrevia');
+
+function dibujar() {
+  vista.innerHTML = '';
+  capas(avatar).forEach(nombre => {
+    const img = document.createElement('img');
+    img.src = RUTA + nombre + '.png';
+    img.alt = '';
+    vista.appendChild(img);
+  });
+  localStorage.setItem('avatarConfig', JSON.stringify(avatar));
+}
+
+// Construye los controles
+const contenedor = document.getElementById('controles');
+Object.keys(OPCIONES).forEach(clave => {
+  const grupo = document.createElement('div');
+  grupo.className = 'av-grupo';
+  grupo.innerHTML = '<h2>' + OPCIONES[clave].titulo + '</h2><div class="av-opciones"></div>';
+  const caja = grupo.querySelector('.av-opciones');
+
+  OPCIONES[clave].items.forEach(([valor, texto, color]) => {
+    const id = clave + '_' + valor;
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = clave;
+    input.id = id;
+    input.value = valor;
+    input.checked = avatar[clave] === valor;
+    input.addEventListener('change', () => { avatar[clave] = valor; dibujar(); });
+
+    const label = document.createElement('label');
+    label.htmlFor = id;
+    if (color) {
+      label.className = 'av-color';
+      label.style.background = color;
+      label.title = texto;
+      label.setAttribute('aria-label', texto);
+    } else {
+      label.textContent = texto;
+    }
+    caja.append(input, label);
+  });
+  contenedor.appendChild(grupo);
+});
+
+function marcarRadios() {
+  Object.keys(avatar).forEach(k => {
+    const r = document.getElementById(k + '_' + avatar[k]);
+    if (r) r.checked = true;
+  });
+}
+
+// Botón aleatorio
+document.getElementById('btnAleatorio').addEventListener('click', () => {
+  Object.keys(OPCIONES).forEach(k => {
+    const items = OPCIONES[k].items;
+    avatar[k] = items[Math.floor(Math.random() * items.length)][0];
+  });
+  marcarRadios();
+  dibujar();
+});
+
+// Al aceptar: guarda la configuración y una imagen PNG del avatar para usarla en otras páginas
+document.getElementById('btnAceptar').addEventListener('click', () => {
+  localStorage.setItem('avatarConfig', JSON.stringify(avatar));
+  try {
+    const lienzo = document.createElement('canvas');
+    lienzo.width = lienzo.height = 640;
+    const ctx = lienzo.getContext('2d');
+    capas(avatar).forEach(n => ctx.drawImage(cargar(n), 0, 0, 640, 640));
+    localStorage.setItem('avatarImagen', lienzo.toDataURL('image/png'));
+  } catch (e) {
+    // Si el navegador bloquea el canvas (abriendo el archivo directo), queda guardada solo la configuración
+  }
+});
+
+dibujar();
+    </script>
   </body>
 </html>
