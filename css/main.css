@@ -144,20 +144,22 @@ form button[type="submit"]:active {
   background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
 }
 
-.boton-largo{
-  text-align: center;
-  background-color: #00CC00; /* Verde brillante */
+.mi-boton {
+  /* 1. Ancho de barra (puedes usar un valor fijo o 100% para que ocupe el contenedor) */
+  width: 300px; /* O ponle width: 100%; si quieres que llene su espacio */
+  
+  /* 2. Padding en barra: Poco alto arriba/abajo (8px) y muy ancho a los lados (40px) */
+  padding: 8px 40px; 
+  
+  /* 3. Estilos visuales de tu paleta */
+  background-color: #00CC00; /* Tu verde brillante */
   color: #000000;            /* Texto negro */
   border: none;
-  border-radius: 12px;
-  padding: 12px 50px;
-  font-size: 4rem;
+  border-radius: 8px;        /* Bordes redondeados sutiles */
+  font-size: 1.1rem;         /* Tamaño de texto equilibrado */
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: block;      /* Lo convierte en bloque */
-  width: 400px;        /* Un ancho fijo para el botón */
-  margin: 0 auto;      /* Centra automáticamente a la izquierda y derecha */
+  text-align: center;
 }
 
 .boton-largo:hover{
