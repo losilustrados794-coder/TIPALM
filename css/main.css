@@ -1,15 +1,20 @@
+/* ==========================================
+   1. IMPORTACIONES Y CONFIGURACIÓN GLOBAL
+   ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap'); /* Opcional si quieres usar la fuente tecno */
 
 h1 {
   color: #00CC00;                      /* El verde de la primera imagen */
   font-family: 'Syncopate', sans-serif; /* La fuente tecno/cuadrada */
-  font-weight: 700;                    /* Grosor delgado */
+  font-weight: 700;                    /* Grosor */
   letter-spacing: 2px;                 /* Espaciado para mejorar el estilo */
   text-align: center;
 }
 
 
+/* ==========================================
+   2. FORMULARIOS Y ENTRADAS DE TEXTO
+   ========================================== */
 form {
   max-width: 400px;
   margin: 40px auto;
@@ -43,14 +48,14 @@ form input[type="text"] {
   transition: all 0.3s ease;
 }
 
-/* Efecto cuando haces clic o escribes en el input (usa el verde brillante) */
+/* Efecto cuando haces clic o escribes en el input */
 form input[type="text"]:focus {
   outline: none;
   border-color: #00CC00;
   box-shadow: 0 0 8px rgba(0, 204, 0, 0.4);
 }
 
-/* Estilo para el botón de enviar */
+/* Estilo para el botón dentro del formulario */
 form button[type="submit"] {
   width: 100%;
   padding: 12px;
@@ -64,17 +69,18 @@ form button[type="submit"] {
   transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-/* Efecto al pasar el mouse por encima del botón */
 form button[type="submit"]:hover {
   background-color: #00b300;
 }
 
-/* Efecto al presionar el botón */
 form button[type="submit"]:active {
   transform: scale(0.98);
 }
 
-/* Contenedor inclinado */
+
+/* ==========================================
+   3. CONTENEDORES ESPECIALES (CUADRO DE TEXTO)
+   ========================================== */
 .cuadro-de-texto {
   position: relative;
   max-width: 500px;
@@ -124,102 +130,192 @@ form button[type="submit"]:active {
   transform: skewX(12deg);
 }
 
+
+/* ==========================================
+   4. BOTONES GENERALES (.mi-boton)
+   ========================================== */
 .mi-boton {
-  text-align: center;
-  background-color: #00CC00; /* Verde brillante */
-  color: #000000;            /* Texto negro */
+  width: 300px;                  /* Ancho de barra equilibrado */
+  padding: 8px 40px;             /* Poco alto, ancho a los lados */
+  background-color: #00CC00;     /* Tu verde brillante */
+  color: #000000;                /* Texto negro */
   border: none;
-  border-radius: 12px;
-  padding: 40px 40px;
-  font-size: 4rem;
+  border-radius: 8px;            /* Bordes redondeados sutiles */
+  font-size: 1.1rem;             /* Tamaño de texto equilibrado */
   font-weight: bold;
   cursor: pointer;
+  text-align: center;
+  display: block;                /* Lo convierte en bloque */
+  margin: 0 auto;                /* Centrado automático */
   transition: background-color 0.3s ease;
-  display: block;      /* Lo convierte en bloque */
-  width: 400px;        /* Un ancho fijo para el botón */
-  margin: 0 auto;      /* Centra automáticamente a la izquierda y derecha */
 }
 
 .mi-boton:hover {
-  background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
+  background-color: #00b300;     /* Un verde un poco más oscuro al pasar el mouse */
 }
 
-.mi-boton {
-  /* 1. Ancho de barra (puedes usar un valor fijo o 100% para que ocupe el contenedor) */
-  width: 300px; /* O ponle width: 100%; si quieres que llene su espacio */
-  
-  /* 2. Padding en barra: Poco alto arriba/abajo (8px) y muy ancho a los lados (40px) */
-  padding: 8px 40px; 
-  
-  /* 3. Estilos visuales de tu paleta */
-  background-color: #00CC00; /* Tu verde brillante */
-  color: #000000;            /* Texto negro */
-  border: none;
-  border-radius: 8px;        /* Bordes redondeados sutiles */
-  font-size: 1.1rem;         /* Tamaño de texto equilibrado */
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
+.boton-largo:hover {
+  background-color: #00b300; 
 }
 
-.boton-largo:hover{
-    background-color: #00b300; /* Un verde un poco más oscuro al pasar el mouse */
+
+/* ==========================================
+   5. CONTENEDORES DE IMÁGENES Y AVATAR
+   ========================================== */
+.div-img {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 20%;
 }
 
-div-img{
-    justify-content: center;
-    align-items: center;
-    display:flex;
-    padding-top:20%;
+.div-img-base {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 20%;
 }
 
-div-img-base{
-    justify-content: center;
-    align-items: center;
-    display:flex;
-    padding-top:20%;
+img {
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: rgb(173, 173, 237);
+  border-radius: 10px;
+  border: 1px solid black;
 }
-img{
-    transition: transform .2s;
-    width:200px;
-    height:200px;
-    margin:0 auto;
-    background-color: rgb(173, 173, 237);
-    border-radius: 10px;
-    border: 1px solid black;
-}
-img:hover{
-    transform:scale(1.5);
+
+img:hover {
+  transform: scale(1.5);
 }
 
 .avatar-img {
   display: block;
-  margin: 0 auto 20px auto; /* 0 arriba, auto a los lados (centrado), 20px abajo */
+  margin: 0 auto 20px auto; /* Centrado arriba/abajo con margen inferior */
   width: 180px;             /* Ancho deseado */
 }
 
 
-.av-editor { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: flex-start; margin: 16px auto; max-width: 900px; }
-.av-preview { position: relative; width: 340px; max-width: 90vw; aspect-ratio: 1 / 1; background: #dcebf7; border-radius: 16px; overflow: hidden; flex: none; }
-.av-preview img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.av-controles { flex: 1 1 280px; max-width: 420px; }
-.av-grupo { margin-bottom: 16px; }
-.av-grupo h2 { font-size: 1rem; margin: 0 0 6px; }
-.av-opciones { display: flex; flex-wrap: wrap; gap: 6px; }
-.av-opciones input { position: absolute; opacity: 0; pointer-events: none; }
-.av-opciones label { padding: 6px 12px; border: 2px solid #8a8a9a; border-radius: 999px; cursor: pointer; user-select: none; }
-.av-opciones input:checked + label { background: #333645; color: #fff; border-color: #333645; }
-.av-opciones input:focus-visible + label { outline: 3px solid #5b7fd6; outline-offset: 2px; }
-.av-opciones .av-color { width: 34px; height: 34px; padding: 0; border-width: 3px; }
-.av-opciones input:checked + .av-color { border-color: #000; box-shadow: 0 0 0 2px #fff inset; }
-.av-acciones { text-align: center; margin: 16px 0; }
+/* ==========================================
+   6. ESTILOS DEL EDITOR DE AVATAR
+   ========================================== */
+.av-editor { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 32px; 
+  justify-content: center; 
+  align-items: flex-start; 
+  margin: 16px auto; 
+  max-width: 900px; 
+}
 
-/* Blindaje: evita que reglas globales (main.css) alteren las capas del avatar */
-.av-preview { background: #dcebf7 !important; isolation: isolate; }
+.av-preview { 
+  position: relative; 
+  width: 340px; 
+  max-width: 90vw; 
+  aspect-ratio: 1 / 1; 
+  background: #dcebf7; 
+  border-radius: 16px; 
+  overflow: hidden; 
+  flex: none; 
+}
+
+.av-preview img { 
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%; 
+}
+
+.av-controles { 
+  flex: 1 1 280px; 
+  max-width: 420px; 
+}
+
+.av-grupo { 
+  margin-bottom: 16px; 
+}
+
+.av-grupo h2 { 
+  font-size: 1rem; 
+  margin: 0 0 6px; 
+}
+
+.av-opciones { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 6px; 
+}
+
+.av-opciones input { 
+  position: absolute; 
+  opacity: 0; 
+  pointer-events: none; 
+}
+
+.av-opciones label { 
+  padding: 6px 12px; 
+  border: 2px solid #8a8a9a; 
+  border-radius: 999px; 
+  cursor: pointer; 
+  user-select: none; 
+}
+
+.av-opciones input:checked + label { 
+  background: #333645; 
+  color: #fff; 
+  border-color: #333645; 
+}
+
+.av-opciones input:focus-visible + label { 
+  outline: 3px solid #5b7fd6; 
+  outline-offset: 2px; 
+}
+
+.av-opciones .av-color { 
+  width: 34px; 
+  height: 34px; 
+  padding: 0; 
+  border-width: 3px; 
+}
+
+.av-opciones input:checked + .av-color { 
+  border-color: #000; 
+  box-shadow: 0 0 0 2px #fff inset; 
+}
+
+.av-acciones { 
+  text-align: center; 
+  margin: 16px 0; 
+}
+
+/* Blindaje: evita que reglas globales alteren las capas del avatar */
+.av-preview { 
+  background: #dcebf7 !important; 
+  isolation: isolate; 
+}
+
 .av-preview > img {
-  position: absolute !important; inset: 0 !important;
-  width: 100% !important; height: 100% !important; max-width: none !important;
-  display: block !important; opacity: 1 !important; visibility: visible !important;
+  position: absolute !important; 
+  inset: 0 !important;
+  width: 100% !important; 
+  height: 100% !important; 
+  max-width: none !important;
+  display: block !important; 
+  opacity: 1 !important; 
+  visibility: visible !important;
+  mix-blend-mode: normal !important; 
+  filter: none !important; 
+  transform: none !important;
+  background: none !important; 
+  border: 0 !important; 
+  margin: 0 !important; 
+  padding: 0 !important;
+  object-fit: contain !important; 
+  clip-path: none !important; 
+  mask: none !important;
+}
   mix-blend-mode: normal !important; filter: none !important; transform: none !important;
   background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important;
   object-fit: contain !important; clip-path: none !important; mask: none !important;
