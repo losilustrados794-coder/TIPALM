@@ -47,10 +47,11 @@
           ancho: 320 
         });
 
-        miPersonaje.decir('¡Me siento increíblemente feliz!', { 
-          expresion: 'superfeliz', 
-          pose: 'ok' 
-        });
+      miPersonaje.decir('como te sientes?', {
+  expresion: 'emocionado',   // cómo se ve la cara
+  pose: 'ok',           // qué hacen los brazos
+  ms: 1800000              // cuánto dura el globo (en milisegundos)
+});
       } else {
         console.warn("El script del personaje no se ha cargado correctamente.");
       }
