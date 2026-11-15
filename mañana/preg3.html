@@ -38,5 +38,27 @@
     <button type="button" class="mi-boton">Muy difícil </button>
 </a>
   </div>
+  <div id="personaje-animado"></div>
+
+  <!-- Ruta corregida con ../ para salir de la carpeta mañana -->
+  <script src="../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof Personaje !== 'undefined') {
+        const miPersonaje = Personaje.crear('#personaje-animado', { 
+          ancho: 320 
+        });
+
+      miPersonaje.decir('como te sientes?', {
+  expresion: 'normal',   // cómo se ve la cara
+  pose: 'senalar',           // qué hacen los brazos
+  ms: 1800000              // cuánto dura el globo (en milisegundos)
+});
+      } else {
+        console.warn("El script del personaje no se ha cargado correctamente.");
+      }
+    });
+  </script>
+
 </body>
 </html>
