@@ -25,5 +25,23 @@ Conversar con un compañero o profesional de salud mental.
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
+         <script src="../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof Personaje !== 'undefined') {
+        const miPersonaje = Personaje.crear('#personaje-animado', { 
+          ancho: 320 
+        });
+
+      miPersonaje.decir('como te sientes?', {
+  expresion: 'normal',   // cómo se ve la cara
+  pose: 'senalar',           // qué hacen los brazos
+  ms: 1800000              // cuánto dura el globo (en milisegundos)
+});
+      } else {
+        console.warn("El script del personaje no se ha cargado correctamente.");
+      }
+    });
+  </script>
   </body>
 </html>
