@@ -1,6 +1,7 @@
 
 <html lang="es">
 <head>
+  <meta charset="utf-8">
   <link rel="stylesheet" href="../css/main.css">
   <title>Pregunta 1</title>
 </head>
@@ -12,8 +13,8 @@
 
   <br>
 
+  <!-- Contenedor de botones de emociones (Arriba) -->
   <div class="div-img">
-
     <button type="button" onclick="window.location.href='../mañana/emociones/triste.html'">
       <img src="../img/cara_muy_triste.png" alt="Muy triste">
     </button>
@@ -33,28 +34,29 @@
     <button type="button" onclick="window.location.href='../mañana/emociones/superfeliz.html'">
       <img src="../img/cara_superfeliz.png" alt="Muy feliz">
     </button>
+  </div>
 
-    <div id="personaje-animado"></div>
+  <!-- Contenedor del personaje animado (Abajo de los botones) -->
+  <div id="personaje-animado"></div>
 
-<!-- 3. Scripts necesarios para que funcione el avatar (deben ir antes de cerrar el body) -->
-<script src="../js/avatar-personaje-completo.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (typeof Personaje !== 'undefined') {
-      // Crea el personaje dentro del div anterior con el ancho deseado
-      const miPersonaje = Personaje.crear('#personaje-animado', { 
-        ancho: 320 
-      });
+  <!-- Scripts necesarios para que funcione el avatar -->
+  <script src="../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof Personaje !== 'undefined') {
+        const miPersonaje = Personaje.crear('#personaje-animado', { 
+          ancho: 320 
+        });
 
-      // Configura la expresión y el texto que dirá al cargar
-      miPersonaje.decir('¡Me siento increíblemente feliz!', { 
-        expresion: 'superfeliz', 
-        pose: 'ok' 
-      });
-    } else {
-      console.warn("El script del personaje no se ha cargado correctamente.");
-    }
-  });
-</script>
+        miPersonaje.decir('¡Me siento increíblemente feliz!', { 
+          expresion: 'superfeliz', 
+          pose: 'ok' 
+        });
+      } else {
+        console.warn("El script del personaje no se ha cargado correctamente.");
+      }
+    });
+  </script>
+
 </body>
 </html>
