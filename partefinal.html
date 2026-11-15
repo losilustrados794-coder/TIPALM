@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../css/main.css">
+    <title>partefinal</title>
+  </head>
+  <body>
+    <h1>FElICIDADES<span id="nombreUsuario"></span> POR COMPLETAR NUESTRO TEST</h1>
+    <br>
+    <br>
+    <div class="boton-largo">
+      <a href="index.html">
+        <button type="button" class="mi-boton">volver al principio</button>
+      </a>
+    </div>
+    <script>
+    // 1. Capturamos los datos que viajan en la URL
+    const parametros = new URLSearchParams(window.location.search);
+    
+    // 2. Extraemos el valor que tiene 'nombre' (el mismo name del input del formulario)
+    const elNombre = parametros.get('nombre');
+    
+    // 3. Si el usuario escribió un nombre, lo insertamos en el span de la página
+    if (elNombre) {
+      document.getElementById('nombreUsuario').textContent = elNombre;
+    } else {
+      document.getElementById('nombreUsuario').textContent = "Astronauta"; // Por si entran sin escribir nada
+    }
+  </script>
+  </body>
+</html>
