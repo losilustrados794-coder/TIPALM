@@ -166,7 +166,7 @@ form button[type="submit"]:active {
   justify-content: center;
   align-items: center;
   display: flex;
-  /*padding-top: 20%;
+  /* padding-top: 20%; */
 }
 
 .div-img-base {
@@ -315,10 +315,6 @@ img:hover {
   object-fit: contain !important; 
   clip-path: none !important; 
   mask: none !important;
-}
-  mix-blend-mode: normal !important; filter: none !important; transform: none !important;
-  background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important;
-  object-fit: contain !important; clip-path: none !important; mask: none !important;
 }
 
 /* Corrige el tamaño de las imágenes dentro del contenedor del avatar para que no crezcan de más */
