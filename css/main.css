@@ -166,7 +166,7 @@ form button[type="submit"]:active {
   justify-content: center;
   align-items: center;
   display: flex;
-  padding-top: 20%;
+  /*padding-top: 20%;
 }
 
 .div-img-base {
