@@ -25,18 +25,17 @@
      <img src='../img/cara_superfeliz.png'>
       </button>
   </div>
-
+</br>
 <div id="personaje" style="position:fixed; bottom:0; right:20px; z-index:999; pointer-events:none;"></div>
-<script src="../js/avatar-personaje.js"></script>
+<script src="../js/avatar-personaje-completo.js"></script>
 <script>
-  const p = Personaje.crear('#personaje', { ruta: '../img/avatar/', ancho: 260 });
+  const p = Personaje.crear('#personaje', { ancho: 260 });
 
   p.secuencia([
-    //  texto (globo + boca) | expresion | pose     | ms = duración en milisegundos
-    { texto: '¡Hola!',        expresion: 'feliz',      pose: 'normal',  ms: 2000 },
-    { texto: 'Mira aquí',     expresion: 'normal',     pose: 'senalar', ms: 2500 },
-    { texto: '¡Muy bien!',    expresion: 'emocionado', pose: 'ok',      ms: 2000 },
-    { texto: '¡Cuidado!',     expresion: 'enojado',    pose: 'normal',  ms: 2000 }
+    { texto: '¡Hola!',     expresion: 'feliz',      pose: 'normal',  ms: 2000 },
+    { texto: 'Mira aquí',  expresion: 'normal',     pose: 'senalar', ms: 2500 },
+    { texto: '¡Muy bien!', expresion: 'emocionado', pose: 'ok',      ms: 2000 },
+    { texto: '¡Cuidado!',  expresion: 'enojado',    pose: 'normal',  ms: 2000 }
   ]);
 </script>
 
