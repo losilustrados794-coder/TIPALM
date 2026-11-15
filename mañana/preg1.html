@@ -1,9 +1,6 @@
 
-<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/main.css">
   <title>Pregunta 1</title>
 </head>
@@ -37,5 +34,27 @@
       <img src="../img/cara_superfeliz.png" alt="Muy feliz">
     </button>
 
+    <div id="personaje-animado"></div>
+
+<!-- 3. Scripts necesarios para que funcione el avatar (deben ir antes de cerrar el body) -->
+<script src="js/avatar-personaje-completo.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof Personaje !== 'undefined') {
+      // Crea el personaje dentro del div anterior con el ancho deseado
+      const miPersonaje = Personaje.crear('#personaje-animado', { 
+        ancho: 320 
+      });
+
+      // Configura la expresión y el texto que dirá al cargar
+      miPersonaje.decir('¡Me siento increíblemente feliz!', { 
+        expresion: 'superfeliz', 
+        pose: 'ok' 
+      });
+    } else {
+      console.warn("El script del personaje no se ha cargado correctamente.");
+    }
+  });
+</script>
 </body>
 </html>
