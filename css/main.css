@@ -320,3 +320,19 @@ img:hover {
   background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important;
   object-fit: contain !important; clip-path: none !important; mask: none !important;
 }
+
+/* Corrige el tamaño de las imágenes dentro del contenedor del avatar para que no crezcan de más */
+#personaje-animado img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  transform: none !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+#personaje-animado img:hover {
+  transform: none !important;
+}
