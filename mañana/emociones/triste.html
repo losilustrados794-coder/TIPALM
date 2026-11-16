@@ -7,6 +7,22 @@
     <h1>triste</h1>
     <br>
     <br>
+    
+  <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
+    });
+  </script>
+
     <div class="cuadro-de-texto">
       <p>
         Lo primero que debes hacer es aceptar que estas triste e intenta encontrar propósito o satisfacción en las misiones en las que trabaja, lucha para que tus objetivos se cumplan en tu corta o larga estancia.
@@ -22,21 +38,6 @@
       <button type="button" class="mi-boton">Siguiente pregunta</button>
     </a>
   </div>
-
-  <div id="personaje-animado"></div>
-
-  <script src="../../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Personaje === 'undefined') {
-        console.warn('El script del personaje no se ha cargado correctamente.');
-        return;
-      }
-      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
-      miPersonaje.expresion('normal');
-      miPersonaje.ok(2000);
-    });
-  </script>
 
   </body>
 </html>
