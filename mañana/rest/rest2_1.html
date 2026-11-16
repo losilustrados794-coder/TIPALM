@@ -9,6 +9,20 @@
 </br>
 </br>
 </br>
+  <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
+    });
+  </script>
 <div class= "boton-largo">
 <a  href="../../mañana/rest/rest2.html">
     <button type="button" class="mi-boton">  Tuve pesadillas</button>
@@ -32,20 +46,6 @@
     <button type="button" class="mi-boton"> Extraño mi casa</button>
 </a>
   </div>
-  <div id="personaje-animado"></div>
-
-  <script src="../../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Personaje === 'undefined') {
-        console.warn('El script del personaje no se ha cargado correctamente.');
-        return;
-      }
-      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
-      miPersonaje.expresion('normal');
-      miPersonaje.ok(2000);
-    });
-  </script>
 
 </body>
 </html>
