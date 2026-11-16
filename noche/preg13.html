@@ -85,11 +85,43 @@
   <a  href="../noche/rest/rest13.html">
     <button type="button" class="mi-boton">Nunca</button>
 </a>
-  </div>
+ </div>
   <audio id="audio-pagina" src="audio/audio1.m4a" preload="auto"></audio>
 <div class="audio-controles">
   <button type="button" id="btn-pausa">Pausar</button>
   <button type="button" id="btn-reiniciar">Reiniciar</button>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var audio = document.getElementById('audio-pagina');
+    var btnPausa = document.getElementById('btn-pausa');
+    var btnReiniciar = document.getElementById('btn-reiniciar');
+    if (!audio || !btnPausa || !btnReiniciar) {
+      console.error('Faltan elementos del audio en esta página:', { audio: !!audio, pausa: !!btnPausa, reiniciar: !!btnReiniciar });
+      return;
+    }
+
+    function actualizarBoton() { btnPausa.textContent = audio.paused ? 'Reproducir' : 'Pausar'; }
+
+    var p = audio.play();
+    if (p && p.catch) {
+      p.catch(function () {
+        ['click', 'touchstart', 'keydown'].forEach(function (ev) {
+          document.addEventListener(ev, function () { audio.play().catch(function () {}); }, { once: true });
+        });
+      });
+    }
+
+    btnPausa.addEventListener('click', function () { if (audio.paused) audio.play(); else audio.pause(); });
+    btnReiniciar.addEventListener('click', function () { audio.currentTime = 0; audio.play(); });
+    audio.addEventListener('play', actualizarBoton);
+    audio.addEventListener('pause', actualizarBoton);
+    audio.addEventListener('error', function () {
+      console.error('AUDIO NO CARGA -> ' + audio.currentSrc + ' | código ' + (audio.error ? audio.error.code : '?'));
+    });
+    actualizarBoton();
+  });
+</script>
 </body>
 </html>
