@@ -7,6 +7,21 @@
     <h1>Aislamiento, Algunas veces</h1>
     <br>
     <br>
+                   <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(20000000);
+      miPersonaje.hablar(2000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
 “Adaptarse al aislamiento es un proceso que requiere tiempo. No todos los días serán iguales, pero cada actividad que realizas para cuidar de ti representa un avance en tu bienestar”.
@@ -22,23 +37,5 @@ Practicar ejercicios de relajación y realizar pausas durante la jornada.
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-    <script src="../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Personaje !== 'undefined') {
-        const miPersonaje = Personaje.crear('#personaje-animado', { 
-          ancho: 320 
-        });
-
-      miPersonaje.decir('como te sientes?', {
-  expresion: 'normal',   // cómo se ve la cara
-  pose: 'senalar',           // qué hacen los brazos
-  ms: 1800000              // cuánto dura el globo (en milisegundos)
-});
-      } else {
-        console.warn("El script del personaje no se ha cargado correctamente.");
-      }
-    });
-  </script>
   </body>
 </html>
