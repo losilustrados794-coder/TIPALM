@@ -3,6 +3,39 @@
     <link rel="stylesheet" href="../css/main.css">
     <title>preg2</title>
   </head>
+  <script>
+  (function () {
+    var audio = document.getElementById('audio-pagina');
+    var btnPausa = document.getElementById('btn-pausa');
+    var btnReiniciar = document.getElementById('btn-reiniciar');
+
+    function actualizarBoton() { btnPausa.textContent = audio.paused ? 'Reproducir' : 'Pausar'; }
+
+    // Suena al entrar; si el navegador lo bloquea, suena en el primer clic/toque/tecla
+    var p = audio.play();
+    if (p && p.catch) {
+      p.catch(function () {
+        ['click', 'touchstart', 'keydown'].forEach(function (ev) {
+          document.addEventListener(ev, function () {
+            audio.play().catch(function () {});
+          }, { once: true });
+        });
+      });
+    }
+
+    btnPausa.addEventListener('click', function () {
+      if (audio.paused) audio.play(); else audio.pause();
+    });
+    btnReiniciar.addEventListener('click', function () {
+      audio.currentTime = 0;
+      audio.play();
+    });
+
+    audio.addEventListener('play', actualizarBoton);
+    audio.addEventListener('pause', actualizarBoton);
+    actualizarBoton();
+  })();
+  </script>
 <body>
   <h1>¿Cómo calificarías la calidad de tu descanso durante el periodo de sueño anterior?</h1>
   <h1>(sé sincero)</h1>
