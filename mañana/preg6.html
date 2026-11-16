@@ -9,6 +9,21 @@
 </br>
 </br>
 </br>
+    <!-- Contenedor del personaje animado (abajo) -->
+         <div id="personaje-animado"></div>
+
+  <script src="../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
+    });
+  </script>
 <div class= "boton-largo">
 <a  href="../mañana/rest/rest6.html">
     <button type="button" class="mi-boton">Nunca </button>
@@ -38,27 +53,6 @@
     <button type="button" class="mi-boton">Casi siempre</button>
 </a>
   </div>
-    <div id="personaje-animado"></div>
-
-  <!-- Ruta corregida con ../ para salir de la carpeta mañana -->
-  <script src="../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Personaje !== 'undefined') {
-        const miPersonaje = Personaje.crear('#personaje-animado', { 
-          ancho: 320 
-        });
-
-      miPersonaje.decir('como te sientes?', {
-  expresion: 'normal',   // cómo se ve la cara
-  pose: 'senalar',           // qué hacen los brazos
-  ms: 1800000              // cuánto dura el globo (en milisegundos)
-});
-      } else {
-        console.warn("El script del personaje no se ha cargado correctamente.");
-      }
-    });
-  </script>
   
 </body>
 </html>
