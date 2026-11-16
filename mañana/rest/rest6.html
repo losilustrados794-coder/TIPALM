@@ -7,6 +7,20 @@
     <h1>Seguridad y tranquilidad </h1>
     <br>
     <br>
+             <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
       Programar encuentros individuales y grupales para conversar sobre su estado emocional.
@@ -21,20 +35,6 @@ Establecer acuerdos de convivencia y apoyo mutuo entre los tripulantes.
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-         <div id="personaje-animado"></div>
-
-  <script src="../../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Personaje === 'undefined') {
-        console.warn('El script del personaje no se ha cargado correctamente.');
-        return;
-      }
-      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
-      miPersonaje.expresion('normal');
-      miPersonaje.ok(2000);
-    });
-  </script>
 
   </body>
 </html>
