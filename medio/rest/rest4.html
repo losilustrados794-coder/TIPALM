@@ -7,6 +7,20 @@
     <h1>alucinaciones</h1>
     <br>
     <br>
+                   <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(20000000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
 Para tratar con alucinaciones los fármacos neurolépticos(los antagonistas de la dopamina)constituyen un pilar del tratamiento de las alucinaciones visuales debidas a una enfermedad psicótica primaria pero es necesario es necesario saber si hay algún tipo de demencia con cuerpos de Lewy, demencia asociada a la enfermedad de parkinson o similares
@@ -18,23 +32,5 @@ Para tratar con alucinaciones los fármacos neurolépticos(los antagonistas de l
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-    <script src="../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Personaje !== 'undefined') {
-        const miPersonaje = Personaje.crear('#personaje-animado', { 
-          ancho: 320 
-        });
-
-      miPersonaje.decir('como te sientes?', {
-  expresion: 'normal',   // cómo se ve la cara
-  pose: 'senalar',           // qué hacen los brazos
-  ms: 1800000              // cuánto dura el globo (en milisegundos)
-});
-      } else {
-        console.warn("El script del personaje no se ha cargado correctamente.");
-      }
-    });
-  </script>
   </body>
 </html>
