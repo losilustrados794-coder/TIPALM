@@ -7,6 +7,20 @@
     <h1>como facilitar tu jonada</h1>
     <br>
     <br>
+                       <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(20000000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
       Encuentra significado en tu trabajo
