@@ -16,11 +16,10 @@
         console.warn('El script del personaje no se ha cargado correctamente.');
         return;
       }
-  miPersonaje.secuencia([
-  { expresion: 'feliz',  pose: 'ok',      ms: 20000000 },
-  { expresion: 'normal', pose: 'senalar', ms: 20000000 },
-  { expresion: 'normal', pose: 'normal',  ms: 10000000 }
-], { repetir: true });
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(20000000);
+    });
   </script>
     <div class="cuadro-de-texto">
       <p>
