@@ -7,6 +7,20 @@
     <h1>feliz</h1>
     <br>
     <br>
+      <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+    miPersonaje.secuencia([
+  { expresion: 'feliz',  pose: 'ok',      ms: 2000 },
+  { expresion: 'normal', pose: 'senalar', ms: 2000 },
+  { expresion: 'normal', pose: 'normal',  ms: 1000 }
+], { repetir: true });
+  </script>
+
     <div class="cuadro-de-texto">
       <p>
          La felicidad es una dirección,no un lugar. Sydney J.Harris. 
@@ -24,20 +38,5 @@
   </div>
 
   <div id="personaje-animado"></div>
-
-  <script src="../../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Personaje === 'undefined') {
-        console.warn('El script del personaje no se ha cargado correctamente.');
-        return;
-      }
-    miPersonaje.secuencia([
-  { expresion: 'feliz',  pose: 'ok',      ms: 2000 },
-  { expresion: 'normal', pose: 'senalar', ms: 2000 },
-  { expresion: 'normal', pose: 'normal',  ms: 1000 }
-], { repetir: true });
-  </script>
-
   </body>
 </html>
