@@ -7,6 +7,20 @@
     <h1>que puedo hacer si solo dormir me alivia</h1>
     <br>
     <br>
+    <div id="personaje-animado"></div>
+
+  <script src="../../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
        Conecta con tus seres queridos
@@ -23,19 +37,5 @@ Busca un momento para conversar, compartir una actividad o expresar cómo te sie
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-  <div id="personaje-animado"></div>
-
-  <script src="../../../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Personaje === 'undefined') {
-        console.warn('El script del personaje no se ha cargado correctamente.');
-        return;
-      }
-      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
-      miPersonaje.expresion('normal');
-      miPersonaje.ok(2000);
-    });
-  </script>
   </body>
 </html>
