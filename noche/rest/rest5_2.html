@@ -7,6 +7,21 @@
     <h1> Casi siempre</h1>
     <br>
     <br>
+                   <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(20000000);
+      miPersonaje.hablar(2000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
 «No tienes que afrontar estas dificultades por tu cuenta. Tu salud y seguridad son fundamentales para la misión. Comunicar lo que estás experimentando permitirá que recibas el apoyo necesario».
@@ -24,23 +39,5 @@ Establecer seguimiento para observar la evolución de las dificultades cognitiva
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-      <script src="../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Personaje !== 'undefined') {
-        const miPersonaje = Personaje.crear('#personaje-animado', { 
-          ancho: 320 
-        });
-
-      miPersonaje.decir('como te sientes?', {
-  expresion: 'normal',   // cómo se ve la cara
-  pose: 'senalar',           // qué hacen los brazos
-  ms: 1800000              // cuánto dura el globo (en milisegundos)
-});
-      } else {
-        console.warn("El script del personaje no se ha cargado correctamente.");
-      }
-    });
-  </script>
   </body>
 </html>
