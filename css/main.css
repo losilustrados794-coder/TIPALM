@@ -332,3 +332,7 @@ img:hover {
 #personaje-animado img:hover {
   transform: none !important;
 }
+
+.pregunta-fila { display: flex; align-items: center; justify-content: center; gap: 24px; }
+.div-img { flex: 1 1 auto; }
+#personaje-animado { flex: 0 0 260px; width: 260px; }
