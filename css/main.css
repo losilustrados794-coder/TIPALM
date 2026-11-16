@@ -336,3 +336,10 @@ img:hover {
 .pregunta-fila { display: flex; align-items: center; justify-content: center; gap: 24px; }
 .div-img { flex: 1 1 auto; }
 #personaje-animado { flex: 0 0 260px; width: 260px; }
+
+.audio-controles { display: flex; justify-content: center; gap: 12px; margin: 20px auto; }
+.audio-controles button {
+  padding: 8px 20px; border: none; border-radius: 8px; cursor: pointer;
+  background: #00CC00; color: #000; font-size: 1rem; font-weight: bold;
+}
+.audio-controles button:hover { background: #00b300; }
