@@ -28,11 +28,9 @@
           ancho: 320 
         });
 
-      miPersonaje.decir('como te sientes?', {
-  expresion: 'normal',   // cómo se ve la cara
-  pose: 'senalar',           // qué hacen los brazos
-  ms: 1800000              // cuánto dura el globo (en milisegundos)
-});
+var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+miPersonaje.expresion('normal');   // solo la cara
+miPersonaje.ok(2000);  
       } else {
         console.warn("El script del personaje no se ha cargado correctamente.");
       }
