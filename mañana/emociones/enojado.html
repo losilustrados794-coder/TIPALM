@@ -17,25 +17,19 @@
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-    <div id="personaje-animado"></div>
+ <div id="personaje-animado"></div>
 
-  <!-- Ruta corregida con ../ para salir de la carpeta mañana -->
   <script src="../../js/avatar-personaje-completo.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Personaje !== 'undefined') {
-        const miPersonaje = Personaje.crear('#personaje-animado', { 
-          ancho: 320 
-        });
-
-var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
-miPersonaje.expresion('normal');   // solo la cara
-miPersonaje.ok(2000);  
-      } else {
-        console.warn("El script del personaje no se ha cargado correctamente.");
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
       }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
     });
-  </script>
 
   </body>
 </html>
