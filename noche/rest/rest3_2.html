@@ -7,6 +7,21 @@
     <h1>Lo oculto</h1>
     <br>
     <br>
+                   <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(20000000);
+      miPersonaje.hablar(2000000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
 «No tienes que guardar lo que sientes por miedo a ser juzgado. Hablar de tus pensamientos puede ser el primer paso para recibir el apoyo que mereces».
@@ -19,23 +34,5 @@ Facilitar un espacio privado y confidencial para que el astronauta pueda comunic
         <button type="button" class="mi-boton">siguiente pregunta</button>
       </a>
     </div>
-      <script src="../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Personaje !== 'undefined') {
-        const miPersonaje = Personaje.crear('#personaje-animado', { 
-          ancho: 320 
-        });
-
-      miPersonaje.decir('como te sientes?', {
-  expresion: 'normal',   // cómo se ve la cara
-  pose: 'senalar',           // qué hacen los brazos
-  ms: 1800000              // cuánto dura el globo (en milisegundos)
-});
-      } else {
-        console.warn("El script del personaje no se ha cargado correctamente.");
-      }
-    });
-  </script>
   </body>
 </html>
