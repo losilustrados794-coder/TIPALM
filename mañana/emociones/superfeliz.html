@@ -7,6 +7,20 @@
     <h1>Super Feliz</h1>
     <br>
     <br>
+      <div id="personaje-animado"></div>
+
+  <script src="../../js/avatar-personaje-completo.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Personaje === 'undefined') {
+        console.warn('El script del personaje no se ha cargado correctamente.');
+        return;
+      }
+      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
+      miPersonaje.expresion('normal');
+      miPersonaje.ok(2000);
+    });
+  </script>
     <div class="cuadro-de-texto">
       <p>
         Comienza tu día de manera ascendente y el resto del día seguirá el camino cuesta arriba. Vernon Howard.
@@ -23,19 +37,5 @@
     </a>
   </div>
 
-  <div id="personaje-animado"></div>
-
-  <script src="../../js/avatar-personaje-completo.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Personaje === 'undefined') {
-        console.warn('El script del personaje no se ha cargado correctamente.');
-        return;
-      }
-      var miPersonaje = Personaje.crear('#personaje-animado', { ancho: 320 });
-      miPersonaje.expresion('normal');
-      miPersonaje.ok(2000);
-    });
-  </script>
   </body>
 </html>
